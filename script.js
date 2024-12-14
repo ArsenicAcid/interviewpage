@@ -1,6 +1,6 @@
 // Modals
-let warnModal = document.querySelector('.warning-modal-wrapper');
-let warnModalClose = document.querySelector('.warning-modal-close');
+const warnModal = document.querySelector('.warning-modal-wrapper');
+const warnModalClose = document.querySelector('.warning-modal-close');
 
 warnModalClose.addEventListener('click', () => {
   warnModal.style.display = 'none';
@@ -9,9 +9,9 @@ warnModalClose.addEventListener('click', () => {
 });
 
 
-let infoModal = document.querySelector('.info-modal-wrapper');
-let infoModalBtn = document.querySelector('.info-modal-button');
-let infoModalClose = document.querySelector('.info-modal-close');
+const infoModal = document.querySelector('.info-modal-wrapper');
+const infoModalBtn = document.querySelector('.info-modal-button');
+const infoModalClose = document.querySelector('.info-modal-close');
 
 infoModalBtn.addEventListener('click', () => {
   infoModal.style.display = 'block';
@@ -21,10 +21,11 @@ infoModalClose.addEventListener('click', () => {
 });
 
 
+
 // Typewriter
 let typewriterText = "Discover what I have to offer.";
 function typewriter() {
-  let typewriterElement = document.querySelector('.typewriter');
+  const typewriterElement = document.querySelector('.typewriter');
   let i = 0;
 
   function type() {
@@ -40,7 +41,7 @@ function typewriter() {
 
 
 // FAQ
-let accordion = document.getElementsByClassName("faq-question");
+const accordion = document.getElementsByClassName("faq-question");
 let i;
 
 for (i = 0; i < accordion.length; i++) {
@@ -58,29 +59,38 @@ for (i = 0; i < accordion.length; i++) {
 
 
 // Image carousel
-let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-let galleryWrapper = document.querySelector('.gallery-wrapper');
-let galleryItems = document.querySelectorAll('.gallery-item');
-let galleryPrev = document.querySelector('.gallery-prev');
-let galleryNext = document.querySelector('.gallery-next');
-let galleryWidth = galleryWrapper.offsetWidth;
-let itemWidth = galleryItems[0].offsetWidth;
-let itemCount = galleryItems.length;
-let visibleItems = vw/itemWidth;
+const galleryWrapper = document.querySelector('.gallery-wrapper');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const galleryPrev = document.querySelector('.gallery-prev');
+const galleryNext = document.querySelector('.gallery-next');
 let currentIndex = 0;
+let itemWidth = galleryItems[0].offsetWidth;
+let  itemCount = galleryItems.length;
+let visibleItems = Math.floor(window.innerWidth / itemWidth);
 
-galleryPrev.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-    galleryWrapper.style.transform = `translateX(${currentIndex * -itemWidth}px)`;
-  }
+const updateGalleryPosition = function() {
+    galleryWrapper.style.transform = 'translateX(' + (-currentIndex * itemWidth) + 'px)';
+};
+
+galleryPrev.addEventListener('click', function() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateGalleryPosition();
+    }
 });
-  
-galleryNext.addEventListener('click', () => {
-  if (currentIndex < itemCount - visibleItems) {
-    currentIndex = (currentIndex + 1) % itemCount;
-    galleryWrapper.style.transform = `translateX(${currentIndex * -itemWidth}px)`;
-  }
+
+galleryNext.addEventListener('click', function() {
+    if (currentIndex < itemCount - visibleItems) {
+        currentIndex++;
+        updateGalleryPosition();
+    }
+});
+window.addEventListener('resize', function() {
+    const newVisibleItems = Math.floor(window.innerWidth / itemWidth);
+    if (newVisibleItems !== visibleItems) {
+        currentIndex = Math.min(currentIndex, itemCount - newVisibleItems);
+        updateGalleryPosition();
+    }
 });
 
 
