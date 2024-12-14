@@ -6,8 +6,9 @@
 }
   
 .gallery-wrapper {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
   
