@@ -65,7 +65,7 @@ const galleryPrev = document.querySelector('.gallery-prev');
 const galleryNext = document.querySelector('.gallery-next');
 let currentIndex = 0;
 let itemWidth = galleryItems[0].offsetWidth;
-let  itemCount = galleryItems.length;
+let itemCount = galleryItems.length;
 let visibleItems = Math.floor(window.innerWidth / itemWidth);
 
 const updateGalleryPosition = function() {
@@ -82,13 +82,6 @@ galleryPrev.addEventListener('click', function() {
 galleryNext.addEventListener('click', function() {
     if (currentIndex < itemCount - visibleItems) {
         currentIndex++;
-        updateGalleryPosition();
-    }
-});
-window.addEventListener('resize', function() {
-    const newVisibleItems = Math.floor(window.innerWidth / itemWidth);
-    if (newVisibleItems !== visibleItems) {
-        currentIndex = Math.min(currentIndex, itemCount - newVisibleItems);
         updateGalleryPosition();
     }
 });
