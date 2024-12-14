@@ -224,6 +224,7 @@ a:visited {
 
 /* Gallery Section */
 .gallery {
+    overflow-x: hidden;
     position: relative;
     padding: 1rem;
 }
@@ -262,6 +263,12 @@ a:visited {
     }
 }
 
+@media (max-width: 1024px) and (orientation: landscape) {
+    .gallery-item {
+        width: 26.5rem;
+    }
+}
+
 .gallery-item:hover {
     transform: scale(1.02);
 }
@@ -271,13 +278,6 @@ a:visited {
     height: 100%;
     border-radius: var(--common-radius);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 1024px) and (orientation: landscape) {
-    .gallery-item img {
-        width: 97%;
-        height: 97%;
-    }
 }
 
 .gallery-buttons {
