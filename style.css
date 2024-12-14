@@ -40,6 +40,7 @@ a:visited {
 
 
 
+
 /* Warning Modal */
 .warning-modal-wrapper {
     position: fixed;
@@ -225,13 +226,20 @@ a:visited {
 .gallery {
     position: relative;
     padding: 1rem;
-    user-select: none;
 }
   
 .gallery-wrapper {
     display: flex;
     gap: 1rem;
     transition: transform 0.5s ease-in-out;
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    .gallery-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -265,12 +273,25 @@ a:visited {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 1024px) and (orientation: landscape) {
+    .gallery-item img {
+        width: 97%;
+        height: 97%;
+    }
+}
+
 .gallery-buttons {
     display: flex;
     justify-content: center;
 }
 
 @media (max-width: 767px) {
+    .gallery-buttons {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
     .gallery-buttons {
         display: none;
     }
