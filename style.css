@@ -225,6 +225,7 @@ a:visited {
 .gallery {
     position: relative;
     padding: 1rem;
+    user-select: none;
 }
   
 .gallery-wrapper {
