@@ -361,8 +361,14 @@ a:visited {
 /* Footer */
 .footer {
     background-color: var(--bg-dark-color);
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 2rem;
+    }
 }
 
 .footer-links {

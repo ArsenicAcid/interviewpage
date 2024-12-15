@@ -23,9 +23,10 @@ infoModalClose.addEventListener('click', () => {
 
 
 // Typewriter
+const typewriterElement = document.querySelector('.typewriter');
 let typewriterText = "Discover what I have to offer.";
+
 function typewriter() {
-  const typewriterElement = document.querySelector('.typewriter');
   let i = 0;
 
   function type() {
