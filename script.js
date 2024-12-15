@@ -27,6 +27,7 @@ const typewriterElement = document.querySelector('.typewriter');
 let typewriterText = "Discover what I have to offer.";
 
 function typewriter() {
+  typewriterElement.textContent = '';
   let i = 0;
 
   function type() {
