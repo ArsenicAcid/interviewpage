@@ -178,7 +178,6 @@ a:visited {
 
 .card {
     max-width: 400px;
-    text-align: center;
     margin: 1rem;
     background: var(--secondary-color);
     transition: transform 0.3s ease-in-out;
